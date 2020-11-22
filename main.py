@@ -10,7 +10,6 @@ def fetchExtension(header):
     cleanExtension = [header.text]
     for x in extension:
         cleanExtension.append(x.text.strip())
-    print(cleanExtension)
     return cleanExtension
 
 if __name__ == "__main__":
@@ -18,6 +17,8 @@ if __name__ == "__main__":
     page = requests.get(URL)
     soup = BeautifulSoup(page.content,"html.parser")
     header = soup.find_all("h2")[1:]
+    arr = []
     for x in range(len(header)):
-        fetchExtension(header[x])
+        arr.append(fetchExtension(header[x]))
+    print(arr)
         
